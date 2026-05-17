@@ -1,26 +1,23 @@
-import React from 'react'
-import Header from './partials/Header'
-import Footer from './partials/Footer'
+import React from "react";
+import Header from "./partials/Header";
+import Footer from "./partials/Footer";
 
-const DefaultLayout = () => {
+const DefaultLayout = ({children}) => {
   return (
-    <div className='default-layout'>
-      <header className='header'>
-      <Header/>
+    <div className="default-layout">
+      <header className="header">
+        <Header />
       </header>
 
-      <main className='main'>
-Main Content
+      <main className="main">
+        {children}
       </main>
-      
 
-      <footer className='footer'>
-        <Footer/>
+      <footer className="footer">
+        <Footer />
       </footer>
-      
-      
     </div>
-  )
-}
+  );
+};
 
-export default DefaultLayout
+export default DefaultLayout;
