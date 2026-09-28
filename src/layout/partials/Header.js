@@ -1,7 +1,14 @@
 import React from 'react'
 import {Navbar, Nav } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import {LinkContainer} from "react-router-bootstrap";
 
 const Header = () => {
+const navigate = useNavigate();
+
+    const LogOut = ()=>{
+        navigate('/');
+    }
   return (
     <Navbar collapseOnSelect bg='info' variant='dark' expand='md'>
         <Navbar.Brand>
@@ -10,9 +17,15 @@ const Header = () => {
         <Navbar.Toggle aria-controls='basic-navbar-nav'/>
         <Navbar.Collapse id='basic-navbar-nav'>
             <Nav className='ms-auto'>
-                <Nav.Link href='/dashboard'>Dashboard</Nav.Link>
-                <Nav.Link href='/tickets'>Tickets</Nav.Link>
-                <Nav.Link href='/logout'>Logout</Nav.Link>
+                <LinkContainer to='/dashboardpage'>
+                    <Nav.Link>Dashboard</Nav.Link>
+                </LinkContainer>
+                <LinkContainer to='/ticketlist'>
+                    <Nav.Link>Tickets</Nav.Link>
+                </LinkContainer>
+                
+                    <Nav.Link onClick={LogOut}>Logout</Nav.Link>
+                
             </Nav>
         </Navbar.Collapse>
      </Navbar>

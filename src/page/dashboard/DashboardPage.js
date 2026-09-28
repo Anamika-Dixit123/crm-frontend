@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import TicketTable from "../../components/ticket-table/TicketTable";
-import dummyTickets from "../../assets/data/dummtTickets.json";
+import dummyTickets from "../../assets/data/dummyTickets.json";
 import BreadcrumbPage from "../../components/breadcrumb/Breadcrumb";
+import {Link} from "react-router-dom";
 
 const DashboardPage = () => {
   return (
@@ -14,12 +15,14 @@ const DashboardPage = () => {
       </Row>
       <Row>
         <Col className="text-center mt-5 mb-2">
+        <Link to="/addticket">
           <Button
             variant="info"
             style={{ "fontSize": "2rem", padding: "10px 30px" }}
           >
             Add New Ticekt{" "}
           </Button>
+          </Link>
         </Col>
       </Row>
 

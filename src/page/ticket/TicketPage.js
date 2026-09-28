@@ -4,11 +4,22 @@ import BreadcrumbPage from "../../components/breadcrumb/Breadcrumb";
 import dummyTickets from "../../assets/data/dummyTickets.json";
 import MessageHistory from "../../components/message-history/MessageHistory";
 import UpdateTicket from "../../components/update-ticket/UpdateTicket";
+import { useParams } from "react-router-dom";
 
 const TicketPage = () => {
-  const ticket = dummyTickets[0]; 
+  // const ticket = dummyTickets[0]; 
+  const [ticket , setTicket] = useState("");
+
+  const {tid} = useParams();
   const [message, setMessage] = useState(" ");
- useEffect(() => {}, [message]);
+
+ useEffect(() => {
+  for (let i=0; i< dummyTickets.length; i++){
+    if(dummyTickets[i].id == tid){
+      setTicket(dummyTickets[i]);
+      continue;
+    }}
+ }, [tid]);
 
   const handleOnChange = (e) => {
     const { value } = e.target;
@@ -28,6 +39,7 @@ const TicketPage = () => {
       </Row>
       <Row>
         <Col className = 'text-weight-bolder text-secondary'>
+        {tid}
           <div className="subject">Subject:  {ticket.subject}</div>
           <div className="date">Ticket Opened:  {ticket.addedAt}</div>
           <div className="status">Status:  {ticket.status}</div>
@@ -37,8 +49,7 @@ const TicketPage = () => {
         </Col>
       </Row>
       <Row className="mt-4">
-        <Col>
-        <MessageHistory msg={ticket.history} />
+        <Col>{ticket.history && < MessageHistory msg={ticket.history} />}
         </Col>
       </Row>
       

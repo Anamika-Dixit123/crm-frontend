@@ -4,6 +4,7 @@ import BreadcrumbPage from "../../components/breadcrumb/Breadcrumb";
 import SearchForm from "../../components/search-form/SearchForm";
 import TicketTable from "../../components/ticket-table/TicketTable";
 import dummyTickets from "../../assets/data/dummyTickets.json";
+import { Link } from "react-router-dom";
 
 const TicketList = () => {
   const [str, setStr] = useState("");
@@ -34,7 +35,9 @@ const TicketList = () => {
       </Row>
       <Row className="ticket-actions align-items-center">
         <Col>
-          <Button variant="info">Add New Ticket</Button>
+          <Link to="/addticket">
+            <Button variant="info">Add New Ticket</Button>
+          </Link>
         </Col>
         <Col>
           <Button variant="secondary" className="text-end">
